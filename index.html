@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asma Alshurayhi - Artist Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Crimson Text', serif;
+        line-height: 1.8;
+        color: #2c2c2c;
+        background-color: #fefcf8;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      .lang-ar {
+        display: none;
+        direction: rtl;
+        text-align: right;
+        font-family: 'Crimson Text', serif;
+      }
+
+      .lang-en {
+        direction: ltr;
+        text-align: left;
+      }
+
+      body.arabic .lang-ar {
+        display: block;
+      }
+
+      body.arabic .lang-en {
+        display: none;
+      }
+
+      body.arabic {
+        direction: rtl;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(254, 252, 248, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid #e8e5e0;
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #2c2c2c;
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+      }
+
+      nav {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      nav a {
+        color: #2c2c2c;
+        text-decoration: none;
+        font-weight: 400;
+        transition: color 0.3s ease;
+        font-family: 'Inter', sans-serif;
+      }
+
+      nav a:hover {
+        color: #8b7355;
+      }
+
+      .lang-toggle {
+        background: #8b7355;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+      }
+
+      .lang-toggle:hover {
+        background: #6d5a42;
+      }
+
+      main {
+        margin-top: 80px;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(135deg, #fefcf8 0%, #f8f4ee 100%);
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 300;
+        color: #2c2c2c;
+        margin-bottom: 1rem;
+        font-family: 'Crimson Text', serif;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: #6b6b6b;
+        font-style: italic;
+      }
+
+      section {
+        padding: 4rem 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      section:nth-child(even) {
+        background: #faf7f2;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: #2c2c2c;
+        margin-bottom: 2rem;
+        text-align: center;
+        font-family: 'Crimson Text', serif;
+      }
+
+      h3 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #8b7355;
+        margin: 2rem 0 1rem 0;
+        font-family: 'Crimson Text', serif;
+      }
+
+      h4 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #2c2c2c;
+        margin: 1.5rem 0 0.5rem 0;
+        font-family: 'Inter', sans-serif;
+      }
+
+      p {
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+        text-align: justify;
+      }
+
+      .project {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .project-title {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #8b7355;
+        margin-bottom: 0.5rem;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .project-meta {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 1rem;
+        font-style: italic;
+      }
+
+      .image-placeholder {
+        background: #f0ece6;
+        border: 2px dashed #ccc;
+        border-radius: 8px;
+        padding: 3rem 2rem;
+        text-align: center;
+        margin: 2rem 0;
+        color: #888;
+        font-style: italic;
+      }
+
+      .contact-info {
+        background: #f8f4ee;
+        padding: 2rem;
+        border-radius: 8px;
+        margin-top: 2rem;
+      }
+
+      .contact-info a {
+        color: #8b7355;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .contact-info a:hover {
+        text-decoration: underline;
+      }
+
+      ul {
+        margin-left: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      li {
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        nav {
+          gap: 1rem;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        section {
+          padding: 2rem 1rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <a href="#" class="logo">
+          <span class="lang-en">Asma Alshurayhi</span>
+          <span class="lang-ar">أسما الشريهي</span>
+        </a>
+        <nav>
+          <a href="#about" class="lang-en">About</a>
+          <a href="#about" class="lang-ar">نبذة</a>
+
+          <a href="#projects" class="lang-en">Projects</a>
+          <a href="#projects" class="lang-ar">المشاريع</a>
+
+          <a href="#exhibitions" class="lang-en">Exhibitions</a>
+          <a href="#exhibitions" class="lang-ar">المعارض</a>
+
+          <a href="#press" class="lang-en">Press</a>
+          <a href="#press" class="lang-ar">الإعلام</a>
+
+          <a href="#contact" class="lang-en">Contact</a>
+          <a href="#contact" class="lang-ar">تواصل</a>
+
+          <button class="lang-toggle" onclick="toggleLanguage()">
+            <span class="lang-en">العربية</span>
+            <span class="lang-ar">English</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1 class="lang-en">Asma Alshurayhi</h1>
+        <h1 class="lang-ar">أسما الشريهي</h1>
+        <p class="lang-en">Contemporary Artist</p>
+        <p class="lang-ar">فنانة معاصرة</p>
+      </section>
+
+      <section id="about">
+        <div class="lang-en">
+          <h2>About</h2>
+
+          <h3>About Me</h3>
+          <p>
+            Based in Saudi Arabia, Asma Alshurayhi works across textile, material research, cultural symbolism, and
+            immersive sound. She earned her Fine Arts degree from King Saud University and expanded her practice through
+            rigorous engagement with contemporary art programs, masterclasses, and research workshops at institutions
+            including Misk Art Institute including a research-based artist residency program, the American University in
+            Cairo, and Asia Art Archive.
+          </p>
+
+          <p>
+            Her practice includes embroidery, painting, collage, and sound-based works that investigate acoustic memory,
+            spatial listening, and the emotional dimensions of place. By combining visual and sonic elements, her work
+            creates layered narratives informed by heritage, sensory experience, and cultural inquiry.
+          </p>
+
+          <p>
+            Asma's work has been exhibited within significant institutional contexts, including collaborations with the
+            Ministry of Culture, Ministry of Human Resources, and Ministry of Tourism. Her work has been featured in Hia
+            Magazine highlighting its integration of craft, symbolism, and contemporary research methodologies.
+          </p>
+
+          <p>
+            Driven by rigorous research, material exploration, and interdisciplinary dialogue, her practice develops a
+            cohesive body of work grounded in observation, memory, and cultural resonance.
+          </p>
+
+          <h3>Artist Statement</h3>
+          <p>
+            My practice unfolds across expressive abstraction, textile-based forms, cultural symbolism, and immersive
+            sound, shaped by an evolving inquiry into memory, materiality, and sensory perception.
+          </p>
+
+          <p>
+            I began my formal study of art at King Saud University, where the foundations of drawing, color, and visual
+            analysis marked the beginning of a long research trajectory. Over time, this foundation expanded through
+            advanced programs, masterclasses, and contemporary art studies with respected regional and international
+            institutions — experiences that deepened my understanding of material processes, symbolic languages, and the
+            evolving discourse of contemporary practice.
+          </p>
+
+          <p>
+            <strong>My work is rooted in questions:</strong><br>
+            How do materials carry memory?<br>
+            What is the emotional architecture of sound?<br>
+            How can threads, textures, and rhythms act as forms of cultural storytelling?<br>
+            And how do we perceive identity through what we see — and what we hear?
+          </p>
+
+          <p>
+            These inquiries guide my transition toward interdisciplinary and immersive forms, where embroidery, layered
+            surfaces, and field-recorded sound converge into a unified visual–sonic language. I see my practice as a
+            process of uncovering: tracing emotional, cultural, and sensory layers that live both within the individual
+            and within the wider landscape.
+          </p>
+
+          <p>
+            <em>Across mediums, each piece becomes a topography of presence — a space where memory is textured, resonant,
+              and profoundly human.</em>
+          </p>
+        </div>
+
+        <div class="lang-ar">
+          <h2>نبذة</h2>
+
+          <h3>نبذة عني</h3>
+          <p>
+            أسما الشريهي، سعودية تقيم في الرياض، وتمارس فنونها عبر وسائط تمتد بين النسيج والبحث المادي والرمزية الثقافية
+            والتجارب الصوتية الغامرة. بدأت رحلتها الفنية في جامعة الملك سعود، حيث بدأت دراسة أساسيات الفنون قبل أن توسّع
+            ممارستها عبر برامج فنية وأكاديمية معاصرة، وورش بحثية واحترافية، من بينها برنامج الإقامة الفنية والبحثية في
+            معهد مسك للفنون، إضافة إلى برامج في الجامعة الأمريكية بالقاهرة و"آسيا آرت أركايف".
+          </p>
+
+          <p>
+            تتنوع ممارستها بين التطريز والرسم والكولاج والأعمال الصوتية، حيث تستكشف الذاكرة السمعية، والإنصات المكاني،
+            والأبعاد الشعورية للمدن والأماكن. ومن خلال الجمع بين العناصر البصرية والطبقات الصوتية، تبني أعمالها سرديات
+            مركّبة تستند إلى الإرث، والتجربة الحسية، والبحث الثقافي.
+          </p>
+
+          <p>
+            شاركت أسما في مساحات ومؤسسات رسمية بارزة، من بينها تعاونات مع وزارة الثقافة، ووزارة الموارد البشرية، ووزارة
+            السياحة. كما تناولت مجلة هي أعمالها ضمن موضوع يسلّط الضوء على التكامل بين الحرفة اليدوية والرمزية الثقافية
+            ومنهجيات البحث المعاصرة في ممارستها.
+          </p>
+
+          <p>
+            مدفوعة بالبحث العميق، واستكشاف المواد، والحوار بين التخصصات، تطوّر أسما جسداً فنياً مترابطاً يستند إلى
+            الملاحظة، والذاكرة، والصدى الثقافي.
+          </p>
+
+          <h3>بيان فني</h3>
+          <p>
+            تتشكّل ممارستي عبر التجريد التعبيري، والأشكال القائمة على النسيج، والرمزية الثقافية، والصوت الغامر؛ وهي رحلة
+            تتقاطع فيها الذاكرة مع المادّة، والإدراك الحسي مع البحث المستمر في طبقات الوجود.
+          </p>
+
+          <p>
+            بدأت دراستي الأكاديمية للفنون في جامعة الملك سعود، حيث أرست أسس الرسم واللون والتحليل البصري البدايات الأولى
+            لمسار بحثي طويل. ومع الوقت، اتسعت هذه القاعدة عبر برامج متقدمة، وماستر كلاس، ودراسات فنية معاصرة في مؤسسات
+            إقليمية ودولية رائدة—خبرات عمّقت فهمي لعمليات التشكيل، ولغات الرموز، وتحوّلات الخطاب الفني المعاصر.
+          </p>
+
+          <p>
+            <strong>تتجذر أعمالي في أسئلة مفتوحة:</strong><br>
+            كيف تحمل المواد ذاكرتها؟<br>
+            وما البنية الشعورية للصوت؟<br>
+            وكيف تتحوّل الخيوط والقوام والإيقاعات إلى سرد ثقافي؟<br>
+            وكيف ندرك الهوية من خلال ما نراه—وما نسمعه؟
+          </p>
+
+          <p>
+            هذه الأسئلة تقود تحولي نحو ممارسات متعددة التخصصات وغامرة، حيث يلتقي التطريز مع السطوح المتراكبة، والتسجيلات
+            الصوتية الميدانية، لتكوين لغة بصرية–سمعية موحّدة. أرى عملي باعتباره عملية كشف: تتبّع للطبقات الشعورية
+            والثقافية والحسية التي تسكن الفرد، وتنعكس في المشهد الأوسع.
+          </p>
+
+          <p>
+            <em>وعبر الوسائط المختلفة، تتحول كل قطعة إلى مساحة مُركّبة للحضور— مكان تتجسّد فيه الذاكرة كملمس، وكصدى،
+              وكجوهر إنساني عميق.</em>
+          </p>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="lang-en">
+          <h2>Projects / Works</h2>
+
+          <div class="project">
+            <h4 class="project-title">The Najdi Triangle</h4>
+            <div class="project-meta">
+              Year: 2023 | Materials: Acrylic Clay, wide canvas panels, video projection | One work consisting of 16
+              units
+            </div>
+            <div class="image-placeholder">[Image to be added - The Najdi Triangle Installation]</div>
+            <p>
+              This work is inspired by the triangular motif in Najdi architecture. Through research, I discovered that
+              the triangle is not merely a decorative element, but carries layered meanings and symbolic depth in the
+              built heritage of Najd.
+            </p>
+            <p>
+              The installation consists of 16 clay-like blocks, each representing a traditional Najdi house with
+              elevated geometric structures. A projector overlays the piece: every ten seconds, a word appears,
+              reflecting one of the symbolic meanings of the triangle in Najdi culture.
+            </p>
+          </div>
+
+          <div class="project">
+            <h4 class="project-title">All We See is Appearance</h4>
+            <div class="project-meta">
+              Year: 2023–2024 | Materials: Fabric, hand embroidery threads, beads, acrylic boxes | 7 panels |
+              Dimensions: Various
+            </div>
+            <div class="image-placeholder">[Image to be added - All We See is Appearance Series]</div>
+            <p>
+              This work is inspired by the old proverb "We are only responsible for the outward" and the jurisprudential
+              principle "The outward is ours, and God knows the inward."
+            </p>
+            <p>
+              The series consists of seven textile panels, hand-embroidered with diverse threads, materials, and colors.
+              Each piece carries fine details, with every element carefully crafted and holding a unique symbolism. The
+              mountain, its layers, the sun, and the threads… all intertwine to create a serene and dignified visual
+              presence. The panels are presented in acrylic boxes that preserve them and provide visual depth.
+            </p>
+          </div>
+
+          <div class="project">
+            <h4 class="project-title">Ongoing Project</h4>
+            <div class="project-meta">Year: 2025 | Misk Art Institute Residency</div>
+            <div class="image-placeholder">[Image to be added - Ongoing Project Documentation]</div>
+            <p>A work in progress, developed during the Misk Art Institute residency (2025).</p>
+          </div>
+        </div>
+
+        <div class="lang-ar">
+          <h2>المشاريع / الأعمال</h2>
+
+          <div class="project">
+            <h4 class="project-title">المثلث النجدي</h4>
+            <div class="project-meta">
+              السنة: 2023 | الخامات: اكريلك طين، لوحات كانفس عريضة، عرض ضوئي (بروجيكتور) | عمل واحد يتكون من 16 قطعة
+            </div>
+            <div class="image-placeholder">[سيتم إضافة الصورة - تركيب المثلث النجدي]</div>
+            <p>
+              هذا العمل مستوحى من المثلث النجدي في العمارة التقليدية. خلال البحث اكتشفت أن المثلث ليس مجرد عنصر جمالي،
+              بل يحمل دلالات رمزية عميقة ومتعددة في إرث نجد المعماري.
+            </p>
+            <p>
+              يتكون العمل من 16 قطعة بطابع طيني، تمثل بيوت نجدية تقليدية بهياكل هندسية مرتفعة. يُعرض على العمل
+              بروجيكتور، تظهر من خلاله كلمة جديدة كل عشر ثوانٍ، لتعكس واحدة من المعاني الرمزية للمثلث في ثقافة نجد.
+            </p>
+          </div>
+
+          <div class="project">
+            <h4 class="project-title">ما لنا إلا الظاهر</h4>
+            <div class="project-meta">
+              السنة: 2023–2024 | الخامات: قماش، خيوط مطرزة يدوياً، خرز، صناديق أكريليك | 7 لوحات | المقاسات: متنوعة
+            </div>
+            <div class="image-placeholder">[سيتم إضافة الصورة - سلسلة ما لنا إلا الظاهر]</div>
+            <p>
+              هذا العمل مستلهم من المثل القديم: "ما لنا إلَّا الظاهر"، ومن القاعدة الفقهية: "لنا الظواهر والله يتولى
+              السرائر"
+            </p>
+            <p>
+              تتكون المجموعة من لوحات قماشية مطرزة يدوياً بخيوط ومواد وألوان متنوعة. تحمل كل لوحة تفاصيل دقيقة، وكل
+              تفصيلة فيها مشغولة بعناية وتحمل رمزية خاصة. الجبل، طبقاته، الشمس، والخيوط… جميعها عناصر تتداخل لتشكّل
+              حضوراً بصرياً بهيّاً وهادئاً. تُعرض اللوحات داخل صناديق أكريليك تحفظها وتمنحها عمقاً بصرياً.
+            </p>
+          </div>
+
+          <div class="project">
+            <h4 class="project-title">المشروع الجاري</h4>
+            <div class="project-meta">السنة: 2025 | إقامة معهد مسك للفنون</div>
+            <div class="image-placeholder">[سيتم إضافة الصورة - توثيق المشروع الجاري]</div>
+            <p>عمل قيد التطوير ضمن الإقامة الفنية في معهد مسك للفنون (2025).</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="exhibitions">
+        <div class="lang-en">
+          <h2>Exhibitions & Residencies</h2>
+
+          <h3>Residency</h3>
+          <ul>
+            <li>
+              <strong>Misk Art Institute</strong> — MR10 Artist Residency Program (2025, Riyadh, Saudi Arabia)<br>
+              A research-based residency focusing on material exploration, cultural symbolism, and interdisciplinary
+              practice.
+            </li>
+          </ul>
+
+          <h3>Selected Exhibitions</h3>
+          <ul>
+            <li>Ministry of Tourism — Saudi Founding Day Exhibition</li>
+            <li>Ministry of Culture — National Art Competition</li>
+            <li>Ministry of Human Resources — Cultural Program Collaboration</li>
+            <li>Tajreed Art Gallery — Group Exhibitions (Riyadh)</li>
+          </ul>
+        </div>
+
+        <div class="lang-ar">
+          <h2>المعارض والإقامات الفنية</h2>
+
+          <h3>الإقامات الفنية</h3>
+          <ul>
+            <li>
+              <strong>معهد مسك للفنون</strong> — برنامج الإقامة الفنية MR10 (الرياض، 2025)<br>
+              إقامة بحثية تركّز على استكشاف المواد والرمزية الثقافية والممارسات العابرة للتخصصات.
+            </li>
+          </ul>
+
+          <h3>المعارض المختارة</h3>
+          <ul>
+            <li>معرض يوم التأسيس – وزارة السياحة</li>
+            <li>مسابقة وطنية – وزارة الثقافة</li>
+            <li>برنامج ثقافي – وزارة الموارد البشرية</li>
+            <li>معارض جماعية – تجريد آرت غاليري (الرياض)</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="press">
+        <div class="lang-en">
+          <h2>Press & Media</h2>
+
+          <h3>Hia Magazine — Artist Feature (2025)</h3>
+          <p>
+            A feature highlighting Asma Alshurayhi's contemporary practice, exploring her integration of textile
+            craftsmanship, sound, and cultural symbolism within her artistic research.
+          </p>
+          <p><a href="#">Read the full feature</a></p>
+        </div>
+
+        <div class="lang-ar">
+          <h2>الصحافة والإعلام</h2>
+
+          <h3>مجلة هي — لقاء فني (2025)</h3>
+          <p>
+            تغطية إعلامية تسلّط الضوء على الممارسة الفنية لأسما الشريهي، وكيف تدمج بين الحرفة النسيجية والرمزية الثقافية
+            والصوت ضمن بحثها الفني المعاصر.
+          </p>
+          <p><a href="#">رابط المقال</a></p>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="lang-en">
+          <h2>Contact</h2>
+
+          <div class="contact-info">
+            <p>For inquiries, collaborations, or exhibition opportunities:</p>
+            <p><strong>Email:</strong> <a href="mailto:byshryha@gmail.com">byshryha@gmail.com</a></p>
+            <p>
+              <strong>Instagram:</strong>
+              <a href="https://instagram.com/Asmaalshurayhi" target="_blank">@Asmaalshurayhi</a>
+            </p>
+            <p>
+              <strong>LinkedIn:</strong>
+              <a href="https://www.linkedin.com/in/asma-alshurayhi-97071a34a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">Asma Alshurayhi</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="lang-ar">
+          <h2>تواصل</h2>
+
+          <div class="contact-info">
+            <p>للاستفسارات، التعاونات، أو الفرص الفنية:</p>
+            <p><strong>البريد الإلكتروني:</strong> <a href="mailto:byshryha@gmail.com">byshryha@gmail.com</a></p>
+            <p>
+              <strong>إنستغرام:</strong>
+              <a href="https://instagram.com/Asmaalshurayhi" target="_blank">@Asmaalshurayhi</a>
+            </p>
+            <p>
+              <strong>لينكدإن:</strong>
+              <a href="https://www.linkedin.com/in/asma-alshurayhi-97071a34a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">أسما الشريهي</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      function toggleLanguage() {
+        document.body.classList.toggle('arabic');
+      }
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('nav a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
